@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Случайный праздник дня</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Праздник дня</h1>
+        <p id="holiday"></p>
+        <p id="source"></p>
+        <button onclick="getRandomHoliday()">Показать другой праздник</button>
+    </div>
+
+    <script>
+        const holidays = [
+            { name: "День космонавтики", source: "https://www.calend.ru/holidays/0/0/32/" },
+            { name: "День Победы", source: "https://www.calend.ru/holidays/0/0/40/" },
+            { name: "День России", source: "https://www.calend.ru/holidays/0/0/54/" },
+            { name: "День народного единства", source: "https://www.calend.ru/holidays/0/0/94/" },
+            { name: "Новый год", source: "https://www.calend.ru/holidays/0/0/3/" }
+        ];
+
+        function getRandomHoliday() {
+            const randomIndex = Math.floor(Math.random() * holidays.length);
+            const holiday = holidays[randomIndex];
+            document.getElementById("holiday").textContent = holiday.name;
+            document.getElementById("source").innerHTML = `Источник: <a href="${holiday.source}" target="_blank">Узнать больше</a>`;
+        }
+
+        getRandomHoliday();
+    </script>
+</body>
+</html>
